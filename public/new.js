@@ -31,7 +31,7 @@ function initPopupUI() {
         }
     }
     function playmusic(track) {
-        window.currentSong.src = `/${songFolder}/` + track;
+        window.currentSong.src = `songs/${songFolder}/` + track;
         window.currentSong.play();
         title.innerHTML = decodeURI(track);
         document.querySelector(".songinfo").innerHTML = decodeURI(track);
@@ -62,31 +62,31 @@ function initPopupUI() {
         if (window.currentSong.paused) {
             window.currentSong.play();
             playBtn.classList.replace('fa-play', 'fa-pause');
-            play.src="/img/pause.svg"
+            play.src="img/pause.svg"
         } else {
             window.currentSong.pause();
             playBtn.classList.replace('fa-pause', 'fa-play');
-            play.src="/img/play.svg"
+            play.src="img/play.svg"
         }
     });
 
     prevBtn.addEventListener('click', () => {
-        const index = songss.indexOf(window.currentSong.src.split("/").slice(-1)[0]);
+        const index = songss.indexOf(decodeURI(window.currentSong.src.split("/").slice(-1)[0]));
         if (index - 1 >= 0) {
             playmusic(songss[index - 1].trim());
         }
         playBtn.classList.replace('fa-play', 'fa-pause');
-        play.src="/img/pause.svg"
+        play.src="img/pause.svg"
 
     });
 
     nextBtn.addEventListener('click', () => {
-        const index = songss.indexOf(window.currentSong.src.split("/").slice(-1)[0]);
+        const index = songss.indexOf(decodeURI(window.currentSong.src.split("/").slice(-1)[0]));
         if (index + 1 < songss.length) {
             playmusic(songss[index + 1].trim());
         }
         playBtn.classList.replace('fa-play', 'fa-pause');
-        play.src="/img/pause.svg"
+        play.src="img/pause.svg"
 
     });
 
