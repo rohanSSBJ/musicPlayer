@@ -102,7 +102,7 @@ function initPopupUI() {
         });
     }
     window.currentSong.addEventListener('ended', () => {
-        const index = songss.indexOf(window.currentSong.src.split("/").slice(-1)[0]);
+        const index = songss.indexOf(decodeURI(window.currentSong.src.split("/").slice(-1)[0]));
         if (index + 1 < songss.length) {
             playmusic(songss[index + 1].trim());
         }

@@ -104,7 +104,7 @@ async function displayAlbums() {
 async function main() {
     const res = await fetch("songs/index.json");
     data = await res.json();
-    await getSongs(Object.keys(data)[1]);
+    await getSongs(Object.keys(data)[0]);
     playMusic(songs[0], true)
     //Display albums
     await displayAlbums()
@@ -175,6 +175,12 @@ async function main() {
     }
     )
 
+    //Add an event listner when song ends
+    window.currentSong.addEventListener("ended", () => {
+        const index = songs.indexOf(decodeURI(window.currentSong.src.split("/").slice(-1)[0]))
+                if (index + 1 < songs.length) {
+            playMusic(songs[index + 1].trim())
+        }})  
     //Add an event listner to playbar
     document.querySelector(".playbar").addEventListener("click", () => {
         let add;
