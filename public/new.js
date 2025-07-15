@@ -101,12 +101,12 @@ function initPopupUI() {
             popupContainer.innerHTML = ""; // remove popup cleanly
         });
     }
-    window.currentSong.addEventListener('ended', () => {
-        const index = songss.indexOf(decodeURI(window.currentSong.src.split("/").slice(-1)[0]));
-        if (index + 1 < songss.length) {
-            playmusic(songss[index + 1].trim());
-        }
-    });
+    // window.currentSong.addEventListener('ended', () => {
+    //     const index = songss.indexOf(decodeURI(window.currentSong.src.split("/").slice(-1)[0]));
+    //     if (index + 1 < songss.length) {
+    //         playmusic(songss[index + 1].trim());
+    //     }
+    // });
 }
 
 
